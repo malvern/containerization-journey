@@ -1,0 +1,42 @@
+version: "3"
+services:
+  jenkins-web: 
+    image: jenkinsci/blueocean
+    restart: always
+    container_name: jenkins-web
+    user: root
+    ports:
+     - "8002:8080"
+     - "50000:50000"
+    volumes:
+        - /srv/jenkins:/var/jenkins_home
+    networks: 
+        - localhost
+  gitlab-web:
+    image: 'gitlab/gitlab-ce:latest'
+    restart: always
+    hostname: 'gitlab-container.com'
+    container_name: gitlab-web
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+       external_url 'http://localhost:8001'
+       gitlab_rails['gitlab_shell_ssh_port'] = 2224
+    ports:
+      - '8001:8001/tcp'
+      - '2224:22/tcp'
+    volumes:
+       - '/srv/gitlab/config:/etc/gitlab'
+       - '/srv/gitlab/logs:/var/log/gitlab'
+       - '/srv/gitlab/data:/var/opt/gitlab'
+    networks: 
+        - localhost
+  mailhog:
+    image: mailhog/mailhog:latest
+    restart: always
+    container_name: mail-server
+    ports: 
+      - "1025:1025"
+      - "8025:8025"
+      
+networks: 
+  localhost:
