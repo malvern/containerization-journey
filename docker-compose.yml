@@ -36,7 +36,7 @@ services:
     container_name: mail-server
     ports: 
       - "1025:1025"
-      - "8025:8025"
+      - "8003:8025"
       
 networks: 
   localhost:
