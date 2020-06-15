@@ -40,5 +40,19 @@ or for detached mode
 
 e.g `docker exec -it jenkins_web /bin/bash`
 
+### Setting up Extended E-mail Notification(Jenkins)
+
+*the following steps are used to setup email notifications*
+
+- go to **configuration**
+- under **Extended E-mail Notification**  enter ```SMTP server```  and ```SMTP port```
+   
+  in this case ```SMTP server``` = mail-server    and  ```SMTP port``` =  1025
+  
+  
+**similar approach can be used in setting up** ```E-mail Notification```
+
+
+
 
 
