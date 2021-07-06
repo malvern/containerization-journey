@@ -53,6 +53,29 @@ e.g `docker exec -it jenkins_web /bin/bash`
 **similar approach can be used in setting up** ```E-mail Notification```
 
 
+#### Gitlab password reset
+
+
+*use the following steps for gitlab password*
+
+` docker exec -it` DOCKER_CONTAINER_ID `/bin/sh`
+
+`gitlab-rails console -e production`
+
+  `user = User.where(id: 1).first`
+
+  `user.password = 'your secret'`
+  
+  `user.password_confirmation = 'your secret'`
+  
+  `user.save`
+  
+  `exit`
+
+
+
+
+
 
 
 
